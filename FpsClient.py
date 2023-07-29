@@ -19,7 +19,8 @@ class FpsClient:
 
     def connect(self) -> None:
         """
-        Connects the UMassSocket to the host on the default http port 80.
+        Connects the FPS Server at the specified port (defaults to 9999). The server will start tracking the frames per
+        second once this function is called.
         """
         if self.Socket is None:
             self.Socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -28,8 +29,7 @@ class FpsClient:
 
     def get_fps(self) -> str:
         """
-        Sends the given http request using the connected socket and receives a 1024B response which is printed to the
-        console.
+        Sends a ping to the FPS server and waits to receive the updated frames per second. Returns the FPS as a string.
         """
         if self.Socket is None:
             self.connect()

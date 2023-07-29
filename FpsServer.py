@@ -25,8 +25,9 @@ class HttpServer:
     # Source URL: https://docs.python.org/3/library/socket.html
     def start_server(self) -> None:
         """
-        Starts the HTTP Server and listens for a request at the specified address. Then prints the address of the
-        request, receives the first KiB, and sends the http response.
+        Starts the FPS Server and listens for a request at default port of 9999. Then prints the address of the
+        request. While the client is connected the program waits to receive a byte from the client, calculates the new
+        frames per second value, and sends the response.
         """
         if self.Socket is None:
             self.Socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -52,7 +53,10 @@ class HttpServer:
                     except ConnectionError:
                         conn_open = False
 
-    def calculate_fps_data(self):
+    def calculate_fps_data(self) -> None:
+        """
+        Iterates the count and calculates the updated frames per second while the server is running.
+        """
         self._count += 1
         current_time = time.time()
         try:
