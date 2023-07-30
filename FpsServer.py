@@ -7,7 +7,7 @@ import socket
 import time
 
 
-class HttpServer:
+class FpsServer:
     MAX_FPS = 1000
 
     def __init__(self):
@@ -66,7 +66,7 @@ class HttpServer:
 
 
 if __name__ == '__main__':
-    my_fps_server = HttpServer()
+    my_fps_server = FpsServer()
     print("Starting the FPS Server. Press Ctrl + Break to exit.")
     my_fps_server.start_server()
     input('Press Enter to close...')
