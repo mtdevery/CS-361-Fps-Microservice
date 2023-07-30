@@ -66,6 +66,7 @@ class HttpServer:
 
 
 if __name__ == '__main__':
-    my_http_server = HttpServer()
-    my_http_server.start_server()
+    my_fps_server = HttpServer()
+    print("Starting the FPS Server. Press Ctrl + Break to exit.")
+    my_fps_server.start_server()
     input('Press Enter to close...')
